@@ -26,3 +26,10 @@ module.exports.getAllProducts = (req, res) => {
 }
 
 
+module.exports.getProduct = (req, res) => {
+  Product.findOne({_id: req.params._id})
+  .then(product => res.json(product))
+  .catch(err => console.log(err))
+}
+
+

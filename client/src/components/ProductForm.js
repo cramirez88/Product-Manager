@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
-const ProductForm = () => {
-
-  const [title, setTitle] = useState('')
+const ProductForm = (props) => {
+  const {title, setTitle} = props
+  const [product, setProduct] = useState('')
   const [price, setPrice] = useState('')
   const [description, setDescription] = useState('')
 
@@ -12,13 +12,14 @@ const ProductForm = () => {
     e.preventDefault()
 
     axios.post('http://localhost:8000/api/product', {
-      title,
+      product,
       price,
       description
     })
     .then(res => {
       console.log(res.data)
-      setTitle('')
+      setTitle([...title, res.data])
+      setProduct('')
       setPrice('')
       setDescription('')
     })
@@ -33,7 +34,7 @@ const ProductForm = () => {
       <form onSubmit={submitHandler} >
         <div>
           <label>Title</label>
-          <input type='text' onChange={e => setTitle(e.target.value)} value={title}></input>
+          <input type='text' onChange={e => setProduct(e.target.value)} value={product}></input>
         </div>
         <div>
           <label>Price</label>
