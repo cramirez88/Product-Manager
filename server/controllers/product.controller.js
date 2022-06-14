@@ -15,3 +15,14 @@ module.exports.createProduct = (req, res) => {
 }
 
 
+module.exports.getAllProducts = (req, res) => {
+  Product.find({})
+  .then(product => {
+    console.log(product)
+    
+    res.json(product)
+    })
+  .catch(err => console.log(err))
+}
+
+
