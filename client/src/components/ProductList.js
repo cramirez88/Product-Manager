@@ -27,6 +27,7 @@ const ProductList = (props) => {
                   <p>{product.price}</p>
                   <p>{product.description}</p>
                   <Link to={`/product/${product._id}`}>{product.product} Information</Link>
+                  <Link to={`/product/update/${product._id}`}> Edit</Link>
                   </div>
                 )
                 
